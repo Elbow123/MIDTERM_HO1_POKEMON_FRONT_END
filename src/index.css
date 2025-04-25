@@ -1,0 +1,344 @@
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(270deg, #e0f7ff, #f0e6ff, #ffe6f7);
+  background-size: 600% 600%;
+  animation: animatedBackground 20s ease infinite;
+  padding: 30px;
+  color: #1e1e2f;
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@keyframes animatedBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating Particles */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: particles 80s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes particles {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-50%, -50%); }
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Headings */
+h1 {
+  color: #6a0dad;
+  font-size: 3.2em;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 5px rgba(106, 13, 173, 0.1);
+  animation: fadeIn 2s ease;
+}
+
+h3 {
+  color: #3a0ca3;
+  font-size: 1.5em;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+/* Card Styles */
+.card {
+  border-radius: 24px;
+  padding: 32px 26px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 35px rgba(106, 13, 173, 0.15);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+  position: relative;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  z-index: -1;
+  background: linear-gradient(45deg, #6a0dad, #a64bf4, #ff66cc);
+  border-radius: 28px;
+  background-size: 400%;
+  animation: gradientBorder 8s linear infinite;
+}
+
+@keyframes gradientBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(58, 12, 163, 0.25);
+}
+
+/* Card Ribbon */
+.card::after {
+  content: "Pokémon";
+  position: absolute;
+  top: 14px;
+  right: -35px;
+  transform: rotate(45deg);
+  background: #a64bf4;
+  color: white;
+  padding: 5px 40px;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Card Images */
+.card img {
+  height: 220px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+/* Buttons */
+button,
+.search-btn {
+  padding: 14px 30px;
+  background: linear-gradient(to right, #6a0dad, #a64bf4);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(106, 13, 173, 0.3);
+}
+
+button:hover,
+.search-btn:hover {
+  background: linear-gradient(to right, #4b0082, #9c27b0);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(106, 13, 173, 0.4);
+}
+
+/* Input Group */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+input[type="text"],
+select {
+  flex: 1;
+  padding: 13px 20px;
+  border: 2px solid #a64bf4;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: #6a0dad;
+  box-shadow: 0 0 0 6px rgba(166, 75, 244, 0.2);
+}
+
+/* Poké Ball Design */
+.pokeball {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(to bottom, #fff 50%, #cc0000 50%);
+  border: 5px solid black;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto 24px auto;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+.pokeball::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  background: white;
+  border: 5px solid black;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 1.5s infinite;
+  z-index: 2;
+}
+
+.pokeball::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: black;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 12px rgba(255, 0, 0, 0.3); }
+  100% { box-shadow: 0 0 24px rgba(255, 0, 0, 0.6); }
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Utility */
+hr {
+  border: none;
+  border-top: 2px solid #6a0dad;
+  margin: 40px 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.no-bullets {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .input-group {
+    flex-direction: column;
+  }
+
+  input[type="text"],
+  .search-btn {
+    width: 100%;
+  }
+
+  .card {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Filter Sections */
+.filter-section {
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid #d3bfff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 20px rgba(106, 13, 173, 0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease-in-out;
+}
+
+.filter-section:hover {
+  box-shadow: 0 12px 30px rgba(106, 13, 173, 0.25);
+}
+
+/* Filter Headings */
+.filter-section h3 {
+  color: #4b0082;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* Search Input */
+.input-group input[type="text"] {
+  background-color: #f9f2ff;
+  border: 2px solid #d3bfff;
+}
+
+.input-group input[type="text"]:focus {
+  background-color: #ffffff;
+}
+
+/* Select Dropdowns */
+select.form-control {
+  background-color: #f9f2ff;
+  border: 2px solid #d3bfff;
+  transition: 0.3s ease;
+}
+
+select.form-control:hover {
+  border-color: #a64bf4;
+}
+
+select.form-control:focus {
+  background-color: #ffffff;
+}
+
+/* Add some animation on filter load */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filter-section {
+  animation: fadeInSlide 0.8s ease forwards;
+}
+

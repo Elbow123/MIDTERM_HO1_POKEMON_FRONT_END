@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\POKEMON_REVISITED.props" />
+</Project>
